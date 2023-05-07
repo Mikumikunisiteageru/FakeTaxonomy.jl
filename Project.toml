@@ -2,6 +2,3 @@ name = "RandomSpeciesNames"
 uuid = "09bf1685-acb9-4280-aa83-50c4651e5d39"
 authors = ["Yu-Chang YANG <yang.yc.allium@gmail.com>"]
 version = "0.0.1"
-
-[deps]
-Unicode = "4ec0a83e-493e-50e2-b9ac-8f72acf5a8f5"

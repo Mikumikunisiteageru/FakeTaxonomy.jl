@@ -2,13 +2,23 @@
 
 module RandomSpeciesNames
 
-using Unicode
+export names2kmers, generate
+
+function extract_species_name(infraorspeciesname::AbstractString)
+	space = ' '
+	words = split(infraorspeciesname, space)
+	return join(words[1:2], space)
+end
+
+function remove_accents(str::AbstractString)
+	return Base.Unicode.normalize(str; stripmark=true)
+end
 
 function names2kmers(
-		taxonnames::AbstractVector{<:AbstractString}, k::Integer))
-	speciesnames = unique(Unicode.normalize.(
-		join.(getindex.(split.(taxonnames), [1:2]), ' '), stripmark=true))
-	strings = "^"^k .* speciesnames .* "\$"
+		infraorspeciesnames::AbstractVector{<:AbstractString}, k::Integer)
+	speciesnames = unique(
+		remove_accents.(extract_species_name.(infraorspeciesnames)))
+	strings = "^" ^ k .* speciesnames .* "\$"
 	kmers = Dict{String, Dict{Char, Int}}()
 	for string = strings
 		for i = 1 : length(string) - k
