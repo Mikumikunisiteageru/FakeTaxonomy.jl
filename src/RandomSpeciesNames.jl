@@ -4,6 +4,19 @@ module RandomSpeciesNames
 
 export names2kmers, generate
 
+function encode_kmers(kmers)
+	code = ""
+	current_key = "!" ^ length(first(keys(kmers)))
+	for key = sort!(collect(keys(kmers)), by = key -> replace(key, '^'=>'\0'))
+		code *= key[findfirst(map(!=, current_key, key)):end]
+		current_key = key
+		for char = sort!(collect(keys(kmers[key])))
+			code *= char * string(kmers[key][char])
+		end
+	end
+	return code
+end
+
 function extract_species_name(infraorspeciesname::AbstractString)
 	space = ' '
 	words = split(infraorspeciesname, space)
