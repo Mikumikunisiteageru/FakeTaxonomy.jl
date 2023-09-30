@@ -1,4 +1,4 @@
-name = "RandomSpeciesNames"
+name = "FakeTaxonomy"
 uuid = "09bf1685-acb9-4280-aa83-50c4651e5d39"
 authors = ["Yu-Chang YANG <yang.yc.allium@gmail.com>"]
 version = "0.0.1"

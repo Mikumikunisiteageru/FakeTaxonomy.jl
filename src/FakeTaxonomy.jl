@@ -1,6 +1,6 @@
-# src/RandomSpeciesNames.jl
+# src/FakeTaxonomy.jl
 
-module RandomSpeciesNames
+module FakeTaxonomy
 
 export names2kmers, generate
 
